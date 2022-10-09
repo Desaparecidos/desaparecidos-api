@@ -1,4 +1,5 @@
 import { DataTypes } from 'sequelize'
+import { missingPersonModel } from './missingPersonModel.js'
 import { db } from '../db.js'
 
 export const UserModel = db.define('user', {
@@ -35,6 +36,14 @@ export const UserModel = db.define('user', {
   },
 })
 
-UserModel.sync({ force: false })
+const missingPerson = new missingPersonModel()
+
+UserModel.hasMany(missingPerson, {
+  foreignKey: 'idUser',
+  onUpdate: 'CASCADE',
+  onDelete: 'CASCADE',
+})
+
+UserModel.sync({ force: true })
   .then(() => console.log('users table created'))
   .catch((error) => console.log(error))
