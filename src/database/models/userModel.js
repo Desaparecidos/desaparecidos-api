@@ -11,14 +11,23 @@ export const UserModel = db.define('user', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  cpf: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   phone_number: {
     type: DataTypes.STRING,
     allowNull: true,
+  },
+  address: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   password: {
     type: DataTypes.STRING,

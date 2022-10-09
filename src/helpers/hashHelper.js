@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export class HashHelper {
+class HashHelper {
   get SALT_ROUNDS() {
     return Number(process.env.SALT_ROUNDS) || 16
   }
@@ -16,3 +16,5 @@ export class HashHelper {
     return bcrypt.compare(value, hash)
   }
 }
+
+export const hashHelper = new HashHelper()
