@@ -28,30 +28,23 @@ class UserController {
   async authenticate(req, res) {
     const { email, password } = req.body
 
-    const userWithEmail = await UserModel.findOne({ where: { email } }).catch(
-      (err) => {
-        console.log('Error: ', err)
-      }
-    )
+    const user = await UserModel.findOne({ where: { email } }).catch((err) => {
+      console.log('Error: ', err)
+    })
 
-    if (!userWithEmail) {
-      return res
-        .status(400)
-        .json({ message: 'Email or password does not match!' })
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' })
     }
 
-    const isValidPassword = await hashHelper.compare(
-      password,
-      userWithEmail.password
-    )
+    const isValidPassword = await hashHelper.compare(password, user.password)
 
     if (!isValidPassword) {
       return res.status(401).json({ message: 'This password is incorrect' })
     }
 
-    const token = tokenHelper.execute(userWithEmail.id)
+    const token = tokenHelper.execute(user.id)
 
-    return res.status(201).json({ userWithEmail, token })
+    return res.status(201).json({ user, token })
   }
 
   async findOne() {}

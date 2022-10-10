@@ -36,7 +36,11 @@ export const UserModel = db.define('user', {
   },
 })
 
-UserModel.hasMany(missingPersonModel, { as: 'missingPeople' })
+UserModel.hasMany(missingPersonModel, {
+  as: 'missingPeople',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
 missingPersonModel.belongsTo(UserModel, {
   constraint: true,
   foreignKey: 'userId',
