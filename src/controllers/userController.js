@@ -46,7 +46,7 @@ class UserController {
     )
 
     if (!isValidPassword) {
-      return res.status(401).json({ message: 'This password is not the same' })
+      return res.status(401).json({ message: 'This password is incorrect' })
     }
 
     const token = tokenHelper.execute(userWithEmail.id)

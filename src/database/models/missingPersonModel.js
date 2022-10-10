@@ -71,13 +71,6 @@ export const missingPersonModel = db.define('missingPerson', {
   },
 })
 
-const user = new UserModel()
-
-missingPersonModel.belongsTo(user, {
-  constraints: true,
-  foreignKey: 'idUser',
-})
-
 missingPersonModel
   .sync({ force: false })
   .then(() => console.log('missing person table created'))
