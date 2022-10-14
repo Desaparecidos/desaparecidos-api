@@ -47,11 +47,27 @@ class UserController {
     return res.status(201).json({ user, token })
   }
 
-  async findOne() {}
+  async findOne(req, res) {
+    const { userid } = req.params
+    const user = await UserModel.findOne( {
+      where:{
+        id: userid,
+      },
+    })
+    return user ? res.status(201).json(user) : res.status(400).json({ message: 'User not found' })
+  }
 
-  async update() {}
+  async update(req, res) {
+    const { userid } = req.params
+    await UserModel.update(req.body, {where:{id : userid}})
+    return res.status(204).send()
+  }
 
-  async delete() {}
+  async delete(req, res) {
+    const { userid } = req.params
+    await UserModel.delete({where : { id : userid}})
+    return res.status(204).send()
+  }
 }
 
 export const userController = new UserController()
