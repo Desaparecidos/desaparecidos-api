@@ -4,8 +4,12 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 class TokenHelper {
-  execute(userId) {
-    return jwt.sign({ userId }, process.env.JWT_SECRET)
+  generate(userId) {
+    return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1d' })
+  }
+
+  verify(token) {
+    return jwt.verify(token, process.env.JWT_SECRET)
   }
 }
 
