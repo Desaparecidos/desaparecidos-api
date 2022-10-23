@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize'
 import { db } from '../db.js'
-import { UserModel } from './userModel.js'
 
 export const missingPersonModel = db.define('missingPerson', {
   id: {

@@ -1,6 +1,6 @@
 import express from 'express'
 import 'express-async-errors'
-import { router } from './routes.js'
+import { router } from './routes/routes.js'
 
 const server = express()
 
@@ -8,6 +8,7 @@ server.use(express.json())
 
 server.use(router)
 server.use((err, req, res, next) => {
+  console.log('ERROR:', err)
   return res.status(500).json({ error: err })
 })
 

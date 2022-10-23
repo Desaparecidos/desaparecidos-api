@@ -13,6 +13,8 @@ class AuthMiddleware {
     try {
       const data = tokenHelper.verify(token)
 
+      console.log(data)
+
       req.user = data
 
       next()
