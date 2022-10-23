@@ -18,3 +18,7 @@ missingPeopleRouter.get('/findAll', (req, res) =>
 missingPeopleRouter.get('/:missingPersonId', (req, res) =>
   missingPersonControler.findOne(req, res)
 )
+
+missingPeopleRouter.post('/find', (req, res) =>
+  missingPersonControler.filter(req, res)
+)

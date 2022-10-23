@@ -63,6 +63,16 @@ class MissingPersonControler {
       ? res.status(202).json(missingPerson)
       : res.status(404).json({ message: 'Person not found' })
   }
+
+  async filter(req, res) {
+    const find = await missingPersonModel.findAll({
+      where: {
+        age: req.body.age,
+      },
+    })
+
+    res.status(200).send(find)
+  }
 }
 
 export const missingPersonControler = new MissingPersonControler()
