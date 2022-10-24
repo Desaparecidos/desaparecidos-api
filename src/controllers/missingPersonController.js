@@ -8,16 +8,18 @@ class MissingPersonControler {
       age,
       weight,
       height,
+      sex,
       eyeColor,
       hairType,
       hairColor,
       features,
       clothing,
-      illnesses,
       contacts,
       context,
       address,
       incidentReport,
+      comments,
+      skinColor,
     } = req.body
 
     const missingPerson = await missingPersonModel.create({
@@ -31,11 +33,13 @@ class MissingPersonControler {
       hairColor,
       features,
       clothing,
-      illnesses,
       contacts,
       context,
       address,
       incidentReport,
+      comments,
+      skinColor,
+      sex,
       userId: req.user.userId,
     })
 
@@ -68,6 +72,8 @@ class MissingPersonControler {
     const find = await missingPersonModel.findAll({
       where: {
         age: req.body.age,
+        address: req.body.address,
+        skinColor: req.body.skinColor,
       },
     })
 
