@@ -77,8 +77,24 @@ class MissingPersonControler {
       },
     })
 
-    res.status(200).send(find)
+    console.log(find)
+
+    return res.status(200).json(find)
   }
+
+  async myMissingPersons(req, res) {
+    const { userId } = req.params
+    const myPerson = await missingPersonModel.findAll({
+      where: {
+        userId: userId,
+      },
+    })
+
+    return res.status(200).json(myPerson)
+  }
+  
 }
+
+
 
 export const missingPersonControler = new MissingPersonControler()

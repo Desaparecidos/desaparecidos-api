@@ -22,3 +22,7 @@ missingPeopleRouter.get('/:missingPersonId', (req, res) =>
 missingPeopleRouter.post('/find', (req, res) =>
   missingPersonControler.filter(req, res)
 )
+
+missingPeopleRouter.post('/myPeople/:userId', (req, res) =>
+  missingPersonControler.myMissingPersons(req, res)
+)
