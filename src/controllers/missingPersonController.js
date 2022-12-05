@@ -3,43 +3,45 @@ import { missingPersonModel } from '../database/models/missingPersonModel.js'
 class MissingPersonControler {
   async create(req, res) {
     const {
-      profilePhoto,
       missingPersonName,
-      age,
+      birthDate,
       weight,
-      height,
+      illnesses,
+      tattoos,
       sex,
+      height,
       eyeColor,
       hairType,
       hairColor,
-      features,
+      skinColor,
       clothing,
+      policeReport,
       contacts,
       context,
       address,
-      incidentReport,
       comments,
-      skinColor,
+      profilePhoto
     } = req.body
 
     const missingPerson = await missingPersonModel.create({
-      profilePhoto,
       missingPersonName,
-      age,
+      birthDate,
       weight,
+      illnesses,
+      tattoos,
+      sex,
       height,
       eyeColor,
       hairType,
       hairColor,
-      features,
+      skinColor,
       clothing,
+      policeReport,
       contacts,
       context,
       address,
-      incidentReport,
       comments,
-      skinColor,
-      sex,
+      profilePhoto,
       userId: req.user.userId,
     })
 
@@ -71,9 +73,10 @@ class MissingPersonControler {
   async filter(req, res) {
     const find = await missingPersonModel.findAll({
       where: {
-        age: req.body.age,
+        sex: req.body.age,
         address: req.body.address,
         skinColor: req.body.skinColor,
+        birthDate: req.body.birthDate,
       },
     })
 

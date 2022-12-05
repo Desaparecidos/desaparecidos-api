@@ -16,17 +16,25 @@ export const missingPersonModel = db.define('missingPerson', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  age: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  sex: {
+  birthDate: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   weight: {
     type: DataTypes.STRING,
     allowNull: true,
+  },
+  illnesses: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  tattoos: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  sex: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   height: {
     type: DataTypes.STRING,
@@ -52,7 +60,7 @@ export const missingPersonModel = db.define('missingPerson', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  illnesses: {
+  policeReport: {
     type: DataTypes.STRING,
     allowNull: true,
   },
@@ -65,10 +73,6 @@ export const missingPersonModel = db.define('missingPerson', {
     allowNull: false,
   },
   address: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  incidentReport: {
     type: DataTypes.STRING,
     allowNull: false,
   },

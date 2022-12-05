@@ -18,17 +18,9 @@ export const UserModel = db.define('user', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  cpf: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   phone_number: {
     type: DataTypes.STRING,
     allowNull: true,
-  },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false,
   },
   password: {
     type: DataTypes.STRING,

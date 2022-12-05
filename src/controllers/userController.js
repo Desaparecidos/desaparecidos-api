@@ -7,16 +7,14 @@ class UserController {
   async create(req, res) {
     await userValidator.validate(req.body)
 
-    const { email, username, cpf, phone_number, address, password } = req.body
+    const { email, username, phone_number, password } = req.body
 
     const encryptedPassword = await hashHelper.hash(password)
 
     const user = await UserModel.create({
       email,
       username,
-      cpf,
       phone_number,
-      address,
       password: encryptedPassword,
     })
 
