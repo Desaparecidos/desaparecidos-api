@@ -96,6 +96,15 @@ class MissingPersonControler {
     return res.status(200).json(myPerson)
   }
   
+
+  async getTheLastSixPeople() {
+    const missingPeople = await missingPersonModel.findAll()
+
+    const lastSix = missingPeople.slice(missingPeople.length - 6)
+
+    return  res.status(200).json(lastSix)
+  }
+  
 }
 
 

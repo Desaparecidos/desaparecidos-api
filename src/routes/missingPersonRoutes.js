@@ -26,3 +26,5 @@ missingPeopleRouter.post('/find', (req, res) =>
 missingPeopleRouter.post('/myPeople/:userId', (req, res) =>
   missingPersonControler.myMissingPersons(req, res)
 )
+
+missingPeopleRouter.get('/lastSix', (req, res) => missingPersonControler.getTheLastSixPeople(req, res))
