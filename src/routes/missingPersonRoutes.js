@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { missingPersonControler } from '../controllers/missingPersonController.js'
+import { missingPersonController } from '../controllers/missingPersonController.js'
 import { authMiddleware } from '../middlewares/authMiddleware.js'
 
 export const missingPeopleRouter = express.Router()
@@ -8,23 +8,24 @@ export const missingPeopleRouter = express.Router()
 missingPeopleRouter.post(
   '/create',
   (req, res, next) => authMiddleware.execute(req, res, next),
-  (req, res) => missingPersonControler.create(req, res)
+  (req, res) => missingPersonController.create(req, res)
 )
 
 missingPeopleRouter.get('/findAll', (req, res) =>
-  missingPersonControler.findAll(req, res)
+missingPersonController.findAll(req, res)
 )
 
+missingPeopleRouter.get('/lastSix', (req, res) => missingPersonController.getTheLastSixPeople(req, res))
+
 missingPeopleRouter.get('/:missingPersonId', (req, res) =>
-  missingPersonControler.findOne(req, res)
+missingPersonController.findOne(req, res)
 )
 
 missingPeopleRouter.post('/find', (req, res) =>
-  missingPersonControler.filter(req, res)
+missingPersonController.filter(req, res)
 )
 
 missingPeopleRouter.post('/myPeople/:userId', (req, res) =>
-  missingPersonControler.myMissingPersons(req, res)
+missingPersonController.myMissingPersons(req, res)
 )
 
-missingPeopleRouter.get('/lastSix', (req, res) => missingPersonControler.getTheLastSixPeople(req, res))
