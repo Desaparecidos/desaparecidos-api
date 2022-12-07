@@ -73,15 +73,13 @@ class MissingPersonController {
   async filter(req, res) {
     const find = await missingPersonModel.findAll({
       where: {
-        sex: req.body.age,
-        address: req.body.address,
+        sex: req.body.sex,
+        address: req.body?.address,
         skinColor: req.body.skinColor,
         birthDate: req.body.birthDate,
       },
     })
-
-    console.log(find)
-
+    
     return res.status(200).json(find)
   }
 

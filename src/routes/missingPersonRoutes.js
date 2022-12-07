@@ -25,7 +25,7 @@ missingPeopleRouter.post('/find', (req, res) =>
 missingPersonController.filter(req, res)
 )
 
-missingPeopleRouter.post('/myPeople/:userId', (req, res) =>
+missingPeopleRouter.get('/myPeople/:userId', (req, res) =>
 missingPersonController.myMissingPersons(req, res)
 )
 
