@@ -1,14 +1,13 @@
 import express from 'express'
 import 'express-async-errors'
 import { router } from './routes/routes.js'
+import cors from 'cors';
 
 const server = express()
 
-server.unsubscribe(cors())
-
 server.use(express.json())
 
-
+server.use(cors())
 
 server.use(router)
 server.use((err, req, res, next) => {
