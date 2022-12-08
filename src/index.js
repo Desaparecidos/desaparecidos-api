@@ -4,7 +4,11 @@ import { router } from './routes/routes.js'
 
 const server = express()
 
+server.unsubscribe(cors())
+
 server.use(express.json())
+
+
 
 server.use(router)
 server.use((err, req, res, next) => {
