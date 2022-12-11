@@ -35,7 +35,7 @@ class MissingPersonController {
 
       const fileName = Date.now() + '-' + crypto.randomUUID() + '.' + type.replace('data:image/', '')
 
-      const destination = path.resolve(path.resolve(), 'uploads', fileName)
+      const destination = path.resolve(path.resolve(), '..' , 'uploads', fileName)
       console.log("DESTINO DESGRAÇADO: ",destination);
       console.log("nome do arquivo: ", fileName);
 
