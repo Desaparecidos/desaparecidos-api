@@ -36,6 +36,8 @@ class MissingPersonController {
       const fileName = Date.now() + '-' + crypto.randomUUID() + '.' + type.replace('data:image/', '')
 
       const destination = path.resolve(path.resolve(), 'uploads', fileName)
+      console.log(destination);
+      console.log(fileName);
 
       fs.writeFile(destination, binary, { encoding: 'base64' }, (error) => {
         console.log(`${fileName} created`)
