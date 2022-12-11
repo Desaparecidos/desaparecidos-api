@@ -31,25 +31,18 @@ class MissingPersonController {
     let imagePath = ''
 
     if (profile && profile !== 'data:') {
-      console.log("PROFILE VERME ", profile)
       const [type, binary] = profile.split(';base64,')
 
       const fileName = Date.now() + '-' + crypto.randomUUID() + '.' + type.replace('data:image/', '')
 
       const destination = path.join(process.cwd(), 'uploads', fileName)
 
-      console.log("DESTINO DE MERDA: ", destination)
-
       fs.writeFile(destination, binary, { encoding: 'base64' }, (error) => {
         console.log(error)
         console.log(`${fileName} created`)
       })
 
-      console.log("PASSOU PORRA");
-
       imagePath = fileName
-
-      console.log("IMAGEPATH: ", imagePath)
     }
 
     const missingPerson = await missingPersonModel.create({
