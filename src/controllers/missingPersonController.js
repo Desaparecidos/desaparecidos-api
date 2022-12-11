@@ -38,10 +38,13 @@ class MissingPersonController {
       const destination = path.resolve(path.resolve(), '..' , 'uploads', fileName)
       console.log("DESTINO DESGRAÇADO: ",destination);
       console.log("nome do arquivo: ", fileName);
+      console.log("BINARY FDP ", binary)
 
       fs.writeFile(destination, binary, { encoding: 'base64' }, (error) => {
         console.log(`${fileName} created`)
       })
+
+      console.log("PASSOU PORRA");
 
       imagePath = fileName
 
