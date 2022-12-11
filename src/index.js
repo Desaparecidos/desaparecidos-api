@@ -19,4 +19,4 @@ server.use((err, req, res, next) => {
   return res.status(500).json({ error: err })
 })
 
-server.listen(3000, () => console.log('Server is listened on port 3000'))
+server.listen(process.env.PORT || 3000, () => console.log('Server is listened on port 3000'))
