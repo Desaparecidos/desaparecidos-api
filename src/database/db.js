@@ -18,7 +18,7 @@ export const db = new Sequelize(
 
 async function authenticate() {
   try {
-    db.sync({ force: false })
+    db.sync({ force: true })
     await db.authenticate()
 
     console.log('Database working')
