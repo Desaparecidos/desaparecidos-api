@@ -36,7 +36,7 @@ class MissingPersonController {
 
       const fileName = Date.now() + '-' + crypto.randomUUID() + '.' + type.replace('data:image/', '')
 
-      const destination = path.resolve(path.resolve(), '..' , 'uploads', fileName)
+      const destination = path.join(process.cwd(), 'uploads', fileName)
 
       console.log("DESTINO DE MERDA: ", destination)
 
