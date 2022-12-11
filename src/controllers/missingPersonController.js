@@ -44,6 +44,8 @@ class MissingPersonController {
       })
 
       imagePath = fileName
+
+      console.log("IMAGEPATH: ", imagePath)
     }
 
     const missingPerson = await missingPersonModel.create({
