@@ -121,7 +121,7 @@ class MissingPersonController {
     const missingPeople = await missingPersonModel.findAll()
 
     if(missingPeople.length <= 6) {
-      return missingPeople
+      return res.status(200).json(missingPeople)
     }
 
     const lastSix = missingPeople.splice(missingPeople.length - 6)
